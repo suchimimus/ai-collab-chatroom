@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "msg_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{13}$"
+    },
+    "from": {
+      "type": "string",
+      "enum": ["designer", "simulator", "validator", "documenter"]
+    },
+    "to": {
+      "type": "string",
+      "enum": ["designer", "simulator", "validator", "documenter", "all"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["proposal", "meta", "answer", "error"]
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "medium", "high"]
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "content": { "type": "string" }
+      },
+      "required": ["content"]
+    }
+  },
+  "required": ["msg_id", "timestamp", "from", "to", "type", "priority", "payload"]
+}
